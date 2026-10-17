@@ -46,7 +46,7 @@ body {
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
-.wrap { max-width: 1040px; margin-inline: auto; }
+.wrap { max-width: 1480px; margin-inline: auto; }
 
 /* Film grain: one layer darkens the light areas, one lightens the dark areas, so both themes and the solid black blocks get texture. */
 body::before, body::after { content: ""; position: fixed; inset: 0; z-index: 100; pointer-events: none; background-size: 240px 240px; }
@@ -70,8 +70,8 @@ h1, h2, h3, .say { font-weight: 400; font-synthesis: none; }
 .chip i { display: inline-block; width: 0.95em; height: 0.95em; border: 2px solid currentColor; border-radius: 50%; background: linear-gradient(90deg, currentColor 50%, transparent 50%); }
 
 /* Hero */
-h1 { font-family: var(--display); font-size: min(12.5vw, 8.5rem); line-height: 1; white-space: nowrap; margin: clamp(28px, 5vw, 52px) 0 18px; }
-.tagline { font-weight: 600; font-size: clamp(1.1rem, 2.4vw, 1.45rem); line-height: 1.35; max-width: 34em; margin: 0 0 24px; text-wrap: pretty; }
+h1 { font-family: var(--display); font-size: min(12.5vw, 12.5rem); line-height: 1; white-space: nowrap; margin: clamp(28px, 5vw, 52px) 0 18px; }
+.tagline { font-weight: 600; font-size: clamp(1.1rem, 2.4vw, 1.7rem); line-height: 1.35; max-width: 36em; margin: 0 0 24px; text-wrap: pretty; }
 .btn { display: inline-block; font-family: var(--mono); font-weight: 700; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 12px 18px; border: 3px solid var(--ink); background: var(--bg); color: var(--ink); box-shadow: 4px 4px 0 var(--ink); cursor: pointer; }
 .btn:hover { background: var(--ink); color: var(--bg); transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
 .btn:active { transform: translate(4px, 4px); box-shadow: none; }
@@ -99,17 +99,17 @@ h1 { font-family: var(--display); font-size: min(12.5vw, 8.5rem); line-height: 1
 .sec h2 { margin: 0 0 28px; font-family: var(--display-thin); font-size: clamp(2.3rem, 8vw, 4.4rem); line-height: 1; }
 .hl { display: inline-block; background: var(--ink); color: var(--bg); padding: 0.08em 0.24em 0.12em; transform: rotate(-1deg); }
 .lead { font-weight: 700; font-size: clamp(1.4rem, 3.2vw, 2.1rem); line-height: 1.22; letter-spacing: -0.01em; max-width: 26em; margin: 0 0 20px; text-wrap: balance; }
-.prose { max-width: 42em; margin: 0 0 30px; }
+.prose { max-width: 48em; margin: 0 0 30px; }
 .stickers { display: flex; flex-wrap: wrap; gap: 16px 14px; list-style: none; padding: 0 4px 6px 0; margin: 0; }
 .stickers li { font-family: var(--mono); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; padding: 8px 14px; border: 3px solid var(--ink); background: var(--bg); box-shadow: 4px 4px 0 var(--ink); transform: rotate(var(--r, 0deg)); }
 .stickers li.hot { background: var(--ink); color: var(--bg); box-shadow: 4px 4px 0 var(--muted); }
 
-.about-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 300px); gap: 36px 56px; align-items: start; }
+.about-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 380px); gap: 36px 72px; align-items: start; }
 .about-text { min-width: 0; }
 .photo { margin: 0; border: 3px solid var(--ink); box-shadow: 8px 8px 0 var(--ink); background: var(--ink); transform: rotate(1.5deg); }
 .photo img { display: block; width: 100%; height: auto; filter: grayscale(1); }
 
-.stack { display: grid; gap: 32px; }
+.stack { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; align-items: stretch; }
 .card { display: flex; flex-direction: column; border: 3px solid var(--ink); background: var(--bg); box-shadow: 6px 6px 0 var(--ink); min-width: 0; }
 .card .bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 12px; background: var(--ink); color: var(--bg); padding: 8px 14px; font-family: var(--mono); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; }
 .card .body { display: flex; flex-direction: column; flex: 1; padding: 18px 20px 22px; }
@@ -154,6 +154,31 @@ h1 { font-family: var(--display); font-size: min(12.5vw, 8.5rem); line-height: 1
 .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; margin-top: clamp(48px, 7vw, 80px); padding-top: 18px; border-top: 3px solid var(--ink); font-family: var(--mono); font-size: 0.76rem; }
 
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+/* Simple interactions */
+.card { transition: transform 0.15s ease, box-shadow 0.15s ease; }
+.card:hover, .card:focus-within { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--ink); }
+.aw { padding-inline: 14px; transition: background 0.15s ease, color 0.15s ease; }
+.aw:hover { background: var(--ink); color: var(--bg); }
+.aw:hover .when { color: var(--bg); }
+.aw:hover .badge { border-color: var(--bg); }
+.aw.hot:hover .badge { background: var(--bg); color: var(--ink); }
+.tags li { transition: background 0.12s ease, color 0.12s ease; }
+.tags li:hover { background: var(--ink); color: var(--bg); }
+.stickers li { cursor: pointer; user-select: none; transition: transform 0.2s cubic-bezier(.3,1.6,.5,1); }
+.stickers li:hover { transform: rotate(var(--r, 0deg)) translateY(-4px) scale(1.06); }
+.stickers li:active { transform: rotate(var(--r, 0deg)) scale(0.96); }
+.photo { cursor: pointer; transition: transform 0.25s cubic-bezier(.3,1.6,.5,1); }
+.photo:hover { transform: rotate(-1deg) scale(1.02); }
+.marquee:hover .track { animation-play-state: paused; }
+.nav a { text-underline-offset: 6px; text-decoration-thickness: 3px; }
+.nav a[aria-current="true"] { text-decoration: underline; }
+.nav a:hover { text-decoration: underline; }
+.mark { cursor: pointer; }
+@media (prefers-reduced-motion: no-preference) {
+  .rv { opacity: 0; transform: translateY(22px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .rv.in { opacity: 1; transform: none; }
+  .card.rv.in { transition: opacity 0.5s ease, transform 0.15s ease, box-shadow 0.15s ease; }
+}
 /* Awards */
 .awards { list-style: none; margin: 0; padding: 0; }
 .aw { display: grid; grid-template-columns: minmax(0, 130px) minmax(0, 1fr) auto; gap: 6px 20px; align-items: baseline; padding-block: 18px; border-top: 3px solid var(--ink); }
@@ -163,12 +188,15 @@ h1 { font-family: var(--display); font-size: min(12.5vw, 8.5rem); line-height: 1
 .aw p { margin: 0; max-width: 40em; }
 .aw .badge { font-family: var(--mono); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 10px; border: 2px solid var(--ink); }
 .aw.hot .badge { background: var(--ink); color: var(--bg); }
-#web { display: block; width: 100%; height: clamp(560px, 62vw, 640px); background: var(--ink); touch-action: auto; }
+#web { display: block; width: 100%; height: clamp(560px, 52vw, 720px); background: var(--ink); touch-action: auto; }
 .skills-note { margin: 0 0 22px; max-width: 40em; }
 @media (max-width: 640px) {
   .aw { grid-template-columns: minmax(0, 1fr) auto; }
   .aw .when { grid-column: 1 / -1; }
   #web { height: 640px; }
+}
+@media (max-width: 960px) {
+  .stack { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 860px) {
   .grid3 { grid-template-columns: minmax(0, 1fr); }
@@ -207,18 +235,6 @@ h1 { font-family: var(--display); font-size: min(12.5vw, 8.5rem); line-height: 1
       <a class="btn" href="#contact">Say hello &rarr;</a>
       <button class="btn btn-inv" id="surprise" type="button">Click for a surprise</button>
     </div>
-
-    <figure class="win">
-      <div class="titlebar">
-        <span>graph.exe</span>
-        <span>wheel graph</span>
-      </div>
-      <canvas id="stage" role="img" aria-label="A wheel graph drifting slowly. The labeled nodes link to the sections of this page, and you can drag them around."></canvas>
-      <div class="status">
-        <span>Drag the nodes around. Tap a label to jump to that section.</span>
-        <span>|V| = 5 &middot; |E| = 8</span>
-      </div>
-    </figure>
 
     <div class="marquee" aria-hidden="true">
       <div class="track">
@@ -412,239 +428,47 @@ h1 { font-family: var(--display); font-size: min(12.5vw, 8.5rem); line-height: 1
 </div>
 
 <script>
+/* Small interactions: nav highlights the section you are in, things slide in as you scroll, stickers hop when clicked, and the photo has things to say. */
 (function () {
-  /* A wheel graph whose labeled nodes are the site navigation. Each node drifts around its home spot on its own, and the springs keep the edges stretchy. Dragging pulls a node and it springs back. */
-  var canvas = document.getElementById('stage');
-  var ctx = canvas.getContext('2d');
-  var cs = getComputedStyle(document.documentElement);
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (document.fonts && document.fonts.load) { document.fonts.load('16px Cenios'); document.fonts.load('16px Carlone'); }
-
-  var W = 0, H = 0, dpr = 1;
-  var nodes = [], edges = [];
-  var pointer = { x: -999, y: -999, active: false };
-  var pressed = null, drag = null;
-  var lastCursor = '';
-
-  var HOME = [
-    [0.5, 0.5, 'cait', null, 'hub'],
-    [0.2, 0.27, 'about', 'about', 'nav'],
-    [0.8, 0.27, 'work', 'work', 'nav'],
-    [0.78, 0.76, 'projects', 'projects', 'nav'],
-    [0.22, 0.76, 'contact', 'contact', 'nav']
-  ];
-  var WHEEL = [[0, 1], [0, 2], [0, 3], [0, 4], [1, 2], [2, 3], [3, 4], [4, 1]];
-
-  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
-
-  /* Hub is a circle in the heavy face, the four section nodes are pills in the thin face. Sizes follow the text, so they are measured each frame. */
-  function measure() {
-    var fs = clamp(W / 38, 11.5, 18);
-    for (var i = 0; i < nodes.length; i++) {
-      var n = nodes[i];
-      if (n.kind === 'hub') {
-        n.hw = n.hh = clamp(W / 17, 28, 40) * 1.25;
-        n.fs = Math.round(n.hw * 0.62);
-      } else {
-        n.fs = fs;
-        ctx.font = '400 ' + fs + 'px Cenios, Arial, sans-serif';
-        n.hw = ctx.measureText(n.label).width / 2 + fs * 1.1;
-        n.hh = fs * 1.45;
-      }
+  var links = document.querySelectorAll('.nav a');
+  var secs = document.querySelectorAll('main .sec');
+  if (window.IntersectionObserver && secs.length) {
+    var spy = new IntersectionObserver(function (en) {
+      en.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (a) { a.setAttribute('aria-current', a.getAttribute('href') === '#' + e.target.id ? 'true' : 'false'); });
+      });
+    }, { rootMargin: '-35% 0px -55% 0px' });
+    secs.forEach(function (sec) { spy.observe(sec); });
+  }
+  if (!reduce && window.IntersectionObserver) {
+    var items = document.querySelectorAll('.sec h2, .card, .aw, .win, .about-text, .row, .say, .note');
+    var rv = new IntersectionObserver(function (en) {
+      en.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); rv.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    items.forEach(function (el) { el.classList.add('rv'); rv.observe(el); });
+    setTimeout(function () { items.forEach(function (el) { var r = el.getBoundingClientRect(); if (r.top < innerHeight) el.classList.add('in'); }); }, 600);
+  }
+  document.querySelectorAll('.stickers li').forEach(function (li) {
+    li.setAttribute('tabindex', '0'); li.setAttribute('role', 'button');
+    function hop() {
+      li.style.setProperty('--r', (Math.random() * 12 - 6).toFixed(1) + 'deg');
+      if (li.animate && !reduce) li.animate([{ translate: '0 0' }, { translate: '0 -14px' }, { translate: '0 0' }], { duration: 320, easing: 'ease-out' });
     }
-  }
-
-  function build() {
-    nodes = []; edges = [];
-    HOME.forEach(function (h) {
-      nodes.push({ x: h[0] * W, y: h[1] * H, vx: 0, vy: 0, fx: 0, fy: 0, hx: h[0], hy: h[1], label: h[2], id: h[3], kind: h[4], hw: 30, hh: 20, fs: 14 });
-    });
-    WHEEL.forEach(function (w) { edges.push({ a: w[0], b: w[1] }); });
-    drag = null; pressed = null;
-    measure();
-  }
-
-  function resize() {
-    var w = canvas.clientWidth, h = canvas.clientHeight;
-    if (!w || !h) return;
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = Math.round(w * dpr);
-    canvas.height = Math.round(h * dpr);
-    if (!W) { W = w; H = h; build(); return; }
-    var sx = w / W, sy = h / H;
-    W = w; H = h;
-    nodes.forEach(function (n) { n.x *= sx; n.y *= sy; });
-    measure();
-  }
-
-  function nodeAt(x, y) {
-    for (var i = nodes.length - 1; i >= 0; i--) {
-      var n = nodes[i];
-      if (n.kind === 'hub') {
-        if (Math.hypot(x - n.x, y - n.y) <= n.hw + 4) return n;
-      } else if (Math.abs(x - n.x) <= n.hw + 4 && Math.abs(y - n.y) <= n.hh + 6) return n;
-    }
-    return null;
-  }
-
-  function go(id) {
-    var el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-  }
-
-  function step(dt, now) {
-    var s = Math.min(dt, 40) / 16.667, i, j, n, m, e, dx, dy, d, f, rest, tx, ty;
-    var amp = reduce ? 0 : (W < 500 ? 9 : 14);
-    for (i = 0; i < nodes.length; i++) { nodes[i].fx = 0; nodes[i].fy = 0; }
-    for (i = 0; i < edges.length; i++) {
-      e = edges[i]; n = nodes[e.a]; m = nodes[e.b];
-      dx = m.x - n.x; dy = m.y - n.y; d = Math.hypot(dx, dy) || 1;
-      rest = Math.hypot((m.hx - n.hx) * W, (m.hy - n.hy) * H);
-      f = (d - rest) * 0.03;
-      n.fx += dx / d * f; n.fy += dy / d * f; m.fx -= dx / d * f; m.fy -= dy / d * f;
-    }
-    for (i = 0; i < nodes.length; i++) {
-      n = nodes[i];
-      for (j = i + 1; j < nodes.length; j++) {
-        m = nodes[j]; dx = m.x - n.x; dy = m.y - n.y; d = Math.hypot(dx, dy) || 1;
-        if (d > 260) continue;
-        f = Math.min(1.2, 1600 / (d * d));
-        n.fx -= dx / d * f; n.fy -= dy / d * f; m.fx += dx / d * f; m.fy += dy / d * f;
-      }
-    }
-    for (i = 0; i < nodes.length; i++) {
-      n = nodes[i];
-      tx = n.hx * W + Math.sin(now / 1300 + i * 1.9) * amp;
-      ty = n.hy * H + Math.cos(now / 1600 + i * 1.4) * amp;
-      n.fx += (tx - n.x) * 0.02; n.fy += (ty - n.y) * 0.02;
-      if (n === drag) continue;
-      n.vx = (n.vx + n.fx * s) * Math.pow(0.86, s);
-      n.vy = (n.vy + n.fy * s) * Math.pow(0.86, s);
-      n.x += n.vx * s; n.y += n.vy * s;
-      if (n.x < n.hw) { n.x = n.hw; n.vx *= -0.4; }
-      if (n.x > W - n.hw) { n.x = W - n.hw; n.vx *= -0.4; }
-      if (n.y < n.hh) { n.y = n.hh; n.vy *= -0.4; }
-      if (n.y > H - n.hh) { n.y = H - n.hh; n.vy *= -0.4; }
-    }
-  }
-
-  function pill(x, y, hw, hh) {
-    var r = hh;
-    ctx.beginPath();
-    ctx.moveTo(x - hw + r, y - hh);
-    ctx.lineTo(x + hw - r, y - hh);
-    ctx.arc(x + hw - r, y, r, -Math.PI / 2, Math.PI / 2);
-    ctx.lineTo(x - hw + r, y + hh);
-    ctx.arc(x - hw + r, y, r, Math.PI / 2, Math.PI * 1.5);
-    ctx.closePath();
-  }
-
-  function draw() {
-    var ink = cs.getPropertyValue('--ink').trim();
-    var paper = cs.getPropertyValue('--bg').trim();
-    var i, n, e;
-    measure();
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.fillStyle = ink;
-    ctx.fillRect(0, 0, W, H);
-
-    ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.strokeStyle = paper;
-    for (i = 0; i < edges.length; i++) {
-      e = edges[i];
-      ctx.beginPath(); ctx.moveTo(nodes[e.a].x, nodes[e.a].y); ctx.lineTo(nodes[e.b].x, nodes[e.b].y); ctx.stroke();
-    }
-
-    var hover = pointer.active ? nodeAt(pointer.x, pointer.y) : null;
-    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    for (i = 0; i < nodes.length; i++) {
-      n = nodes[i];
-      var hot = n === hover || n === drag;
-      if (n.kind === 'hub') {
-        ctx.beginPath(); ctx.arc(n.x, n.y, n.hw, 0, 6.2832);
-        ctx.fillStyle = paper; ctx.fill();
-        ctx.lineWidth = 3; ctx.strokeStyle = paper; ctx.stroke();
-        ctx.fillStyle = ink;
-        ctx.font = '400 ' + n.fs + 'px Carlone, "Arial Black", sans-serif';
-        ctx.fillText(n.label, n.x, n.y + 1);
-      } else {
-        pill(n.x, n.y, n.hw, n.hh);
-        ctx.fillStyle = hot ? paper : ink; ctx.fill();
-        ctx.lineWidth = 3; ctx.strokeStyle = paper; ctx.stroke();
-        ctx.fillStyle = hot ? ink : paper;
-        ctx.font = '400 ' + n.fs + 'px Cenios, Arial, sans-serif';
-        ctx.fillText(n.label, n.x, n.y + 1);
-      }
-    }
-
-    var cur = drag ? 'grabbing' : hover ? (hover.id ? 'pointer' : 'grab') : 'default';
-    if (cur !== lastCursor) { canvas.style.cursor = cur; lastCursor = cur; }
-  }
-
-  /* Input: mouse and pen use pointer events. Touch uses touch events so page scrolling still works anywhere except on a node. */
-  function pos(pt) { var r = canvas.getBoundingClientRect(); return { x: pt.clientX - r.left, y: pt.clientY - r.top }; }
-  function down(x, y) {
-    var n = nodeAt(x, y);
-    pressed = { x: x, y: y, moved: false, node: n };
-    if (n) { drag = n; n.vx = 0; n.vy = 0; }
-    pointer.x = x; pointer.y = y; pointer.active = true;
-  }
-  function move(x, y) {
-    pointer.x = x; pointer.y = y; pointer.active = true;
-    if (pressed && Math.hypot(x - pressed.x, y - pressed.y) > 6) pressed.moved = true;
-    if (drag) { drag.x = clamp(x, drag.hw, W - drag.hw); drag.y = clamp(y, drag.hh, H - drag.hh); }
-  }
-  function up() {
-    if (!pressed) return;
-    var pr = pressed; pressed = null; drag = null;
-    if (!pr.moved && pr.node && pr.node.id) go(pr.node.id);
-  }
-  function cancel() { pressed = null; drag = null; pointer.active = false; }
-
-  canvas.addEventListener('pointerdown', function (e) {
-    if (e.pointerType === 'touch') return;
-    var p = pos(e); down(p.x, p.y);
-    try { canvas.setPointerCapture(e.pointerId); } catch (err) {}
+    li.addEventListener('click', hop);
+    li.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); hop(); } });
   });
-  canvas.addEventListener('pointermove', function (e) {
-    if (e.pointerType === 'touch') return;
-    var p = pos(e); move(p.x, p.y);
-  });
-  canvas.addEventListener('pointerup', function (e) {
-    if (e.pointerType === 'touch') return;
-    up();
-  });
-  canvas.addEventListener('pointerleave', function (e) {
-    if (e.pointerType === 'touch') return;
-    if (!drag) pointer.active = false;
-  });
-  canvas.addEventListener('touchstart', function (e) {
-    var t = e.changedTouches[0], p = pos(t);
-    if (nodeAt(p.x, p.y)) e.preventDefault();
-    down(p.x, p.y);
-  }, { passive: false });
-  canvas.addEventListener('touchmove', function (e) {
-    var t = e.changedTouches[0], p = pos(t);
-    if (drag && e.cancelable) e.preventDefault();
-    move(p.x, p.y);
-  }, { passive: false });
-  canvas.addEventListener('touchend', function () { up(); pointer.active = false; });
-  canvas.addEventListener('touchcancel', cancel);
-
-  resize();
-  if (window.ResizeObserver) new ResizeObserver(resize).observe(canvas);
-  else window.addEventListener('resize', resize);
-
-  var last = 0;
-  function frame(now) {
-    var dt = last ? now - last : 16.7;
-    last = now;
-    if (W) { step(dt, now); draw(); }
-    requestAnimationFrame(frame);
+  var photo = document.querySelector('.photo');
+  if (photo) {
+    var cap = photo.querySelector('.status span');
+    var lines = ['Cait Roach', 'hi!! :3', 'hello again', 'ok that tickles', 'Cait Roach'], k = 0;
+    photo.setAttribute('tabindex', '0'); photo.setAttribute('role', 'button');
+    function say() { k = (k + 1) % lines.length; cap.textContent = lines[k]; }
+    photo.addEventListener('click', say);
+    photo.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); say(); } });
   }
-  if (W) draw();
-  requestAnimationFrame(frame);
 })();
-
 
 /* Skills web: a bigger graph. Categories hang off a center node, and extra links join skills that get used together. Forces settle it, a little wobble keeps it alive, and you can drag nodes around. */
 (function () {
